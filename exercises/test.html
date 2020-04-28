@@ -7,28 +7,21 @@
 </head>
 <body>
 <script>
-    const str = 'hello thereeeeeee';
-
-    function maxChar(str) {
-        const obj = {};
-        let max = 0;
-        let maxChar = '';
-
-        for(let char of str) {
-            obj[char] = obj[char] + 1 || 1;
-        }
-
-        for(let char in obj) {
-            if(obj[char] > max) {
-                max = obj[char];
-                maxChar = char;
+    function fizzbuzz(n) {
+        for(let i = 0; i <= n; i++) {
+            if(i % 3 === 0 & i % 5 === 0) {
+                console.log('fizzbuzz');
+            } else if(i % 3 === 0) {
+                console.log('fizz');
+            } else if(i % 5 === 0) {
+                console.log('buzz')
+            } else {
+                console.log(i);
             }
         }
-
-        return maxChar
     }
 
-    maxChar(str)
+    fizzbuzz(100)
 
 </script>
 </body>
