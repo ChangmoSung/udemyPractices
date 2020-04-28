@@ -7,13 +7,29 @@
 </head>
 <body>
 <script>
-    const reverseInt = n => {
-        const reversed = parseInt(n.toString().split('').reverse().join(''));
+    const str = 'hello thereeeeeee';
 
-        return reversed * Math.sign(n)
+    function maxChar(str) {
+        const obj = {};
+        let max = 0;
+        let maxChar = '';
+
+        for(let char of str) {
+            obj[char] = obj[char] + 1 || 1;
+        }
+
+        for(let char in obj) {
+            if(obj[char] > max) {
+                max = obj[char];
+                maxChar = char;
+            }
+        }
+
+        return maxChar
     }
 
-    reverseInt(1233);
+    maxChar(str)
+
 </script>
 </body>
 </html>
