@@ -7,21 +7,26 @@
 </head>
 <body>
 <script>
-    function fizzbuzz(n) {
-        for(let i = 0; i <= n; i++) {
-            if(i % 3 === 0 & i % 5 === 0) {
-                console.log('fizzbuzz');
-            } else if(i % 3 === 0) {
-                console.log('fizz');
-            } else if(i % 5 === 0) {
-                console.log('buzz')
+    const array = [1,2,3,4,5,3,7];
+    size = 2;
+
+    function chunk(array, size) {
+        const chunked = [];
+
+        for(let element of array) {
+            const last = chunked[chunked.length - 1];
+
+            if(!last || last.length === size) {
+                chunked.push([element]);
             } else {
-                console.log(i);
+                last.push(element);
             }
         }
+
+        return chunked;
     }
 
-    fizzbuzz(100)
+    console.log(chunk(array, size));
 
 </script>
 </body>
