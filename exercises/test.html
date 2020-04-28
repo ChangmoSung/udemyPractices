@@ -7,13 +7,13 @@
 </head>
 <body>
 <script>
-    function palindrome(str) {
-        return str.split('').every((character, i) => {
-            return character === str[str.length - i - 1]
-        })
+    const reverseInt = n => {
+        const reversed = parseInt(n.toString().split('').reverse().join(''));
+
+        return reversed * Math.sign(n)
     }
 
-    console.log(palindrome('121'));
+    reverseInt(1233);
 </script>
 </body>
 </html>
