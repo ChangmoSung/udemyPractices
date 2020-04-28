@@ -12,22 +12,18 @@
 
     function chunk(array, size) {
         const chunked = [];
+        let index = 0;
 
-        for(let element of array) {
-            const last = chunked[chunked.length - 1];
+        while(index < array.length) {
+            chunked.push(array.slice(index, index + size));
 
-            if(!last || last.length === size) {
-                chunked.push([element]);
-            } else {
-                last.push(element);
-            }
+            index += size;
         }
 
         return chunked;
     }
 
-    console.log(chunk(array, size));
-
+    chunk(array, size);
 </script>
 </body>
 </html>
