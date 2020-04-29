@@ -22,18 +22,25 @@
 // }
 
 
+// function vowels(str) {
+//     const vowels = ['a', 'i', 'e', 'o', 'u'];
+//     let vowel = '';
+
+//     for (let char of str.toLowerCase()) {
+//         const filteredVowels = vowels.filter(vowel => vowel === char);
+//         if (vowels.includes(char)) {
+//             vowel += filteredVowels
+//         }
+//     }
+
+//     return vowel
+// }
+
+
 function vowels(str) {
-    const vowels = ['a', 'i', 'e', 'o', 'u'];
-    let vowel = '';
+    const matches = str.match(/[aeiou]/gi);
 
-    for (let char of str.toLowerCase()) {
-        const filteredVowels = vowels.filter(vowel => vowel === char);
-        if (vowels.includes(char)) {
-            vowel += filteredVowels
-        }
-    }
-
-    return vowel
+    return matches ? matches.join('') : 0;
 }
 
 vowels('hI there');
