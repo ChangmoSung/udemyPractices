@@ -7,15 +7,17 @@
 </head>
 <body>
 <script>
-    function anagram(stringA, stringB) {
-        return cleanString(stringA) === cleanString(stringB);
+    function capitalize(str) {
+        const array = [];
+
+        for(char of str.split(' ')) {
+            array.push(char[0].toUpperCase() + char.slice(1));
+        }
+
+        return array.join(' ');
     }
 
-    function cleanString(str) {
-        return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
-    }
-
-    console.log(anagram('hi hi', 'i hih'));
+    console.log(capitalize('hi hello changmo'));
 </script>
 </body>
 </html>
