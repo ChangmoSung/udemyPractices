@@ -36,11 +36,9 @@
 
 
 function steps(n, row = 0, stair = '') {
-    if (n === row) {
-        return;
-    }
+    const add = stair.length <= row ? '#' : ' ';
 
-    if (n === stair.length) {
+    if (stair.length === n) {
         console.log(stair);
 
         steps(n, row + 1);
@@ -48,13 +46,11 @@ function steps(n, row = 0, stair = '') {
         return;
     }
 
-    if (stair.length <= row) {
-        stair += '#';
-    } else {
-        stair += ' ';
+    if (n === row) {
+        return;
     }
 
-    steps(n, row, stair);
+    steps(n, row, stair += add);
 }
 
 steps(3);
