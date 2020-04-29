@@ -7,23 +7,15 @@
 </head>
 <body>
 <script>
-    const array = [1,2,3,4,5,3,7];
-    size = 2;
-
-    function chunk(array, size) {
-        const chunked = [];
-        let index = 0;
-
-        while(index < array.length) {
-            chunked.push(array.slice(index, index + size));
-
-            index += size;
-        }
-
-        return chunked;
+    function anagram(stringA, stringB) {
+        return cleanString(stringA) === cleanString(stringB);
     }
 
-    chunk(array, size);
+    function cleanString(str) {
+        return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
+    }
+
+    console.log(anagram('hi hi', 'i hih'));
 </script>
 </body>
 </html>
