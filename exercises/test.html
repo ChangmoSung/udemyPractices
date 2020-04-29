@@ -8,17 +8,18 @@
 <body>
 <script>
     function vowels(str) {
-        const vowels = ['a', 'i', 'e', 'o', 'u'];
-        let vowel = '';
+            const vowels = ['a', 'i', 'e', 'o', 'u'];
+            let vowel = '';
 
-        for (let char of str.toLowerCase()) {
-            const filteredVowels = vowels.filter(vowel => vowel === char);
+            for (let char of str.toLowerCase()) {
+                const filteredVowels = vowels.filter(vowel => vowel === char);
+                if (vowels.includes(char)) {
+                    vowel += filteredVowels
+                }
+            }
 
-            vowel += filteredVowels
+            console.log(vowel)
         }
-
-        console.log(vowel)
-    }
 
     vowels('hI there');
 </script>
