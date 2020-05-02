@@ -7,49 +7,20 @@
 </head>
 <body>
 <script>
-   function matrix(n) {
-        const result = [];
+   function fib(n) {
+        const array = [0, 1];
 
-        for (let i = 0; i < n; i++) {
-            result.push([]);
+        for (let i = 2; i < n; i++) {
+            const a = array[i - 1];
+            const b = array[i - 2];
+
+            array.push(a + b);
         }
 
-        let counter = 1;
-        let firstRow = 0;
-        let lastRow = n - 1;
-        let firstColumn = 0;
-        let lastColumn = n - 1;
-
-        while (firstRow <= lastRow && firstColumn <= lastColumn) {
-            for (let i = firstColumn; i <= lastColumn; i++) {
-                result[firstRow][i] = counter;
-                counter++;
-            }
-            firstRow++;
-
-            for (let i = firstRow; i <= lastRow; i++) {
-                result[i][lastColumn] = counter;
-                counter++;
-            }
-            lastColumn--;
-
-            for (let i = lastColumn; i >= firstColumn; i--) {
-                result[lastRow][i] = counter;
-                counter++;
-            }
-            lastRow--;
-
-            for (let i = lastRow; i >= firstRow; i--) {
-                result[i][firstColumn] = counter;
-                counter++;
-            }
-            firstColumn++;
-        }
-
-        return result;
+        console.log(array)
    }
 
-   matrix(3);
+   fib(6)
 </script>
 </body>
 </html>
