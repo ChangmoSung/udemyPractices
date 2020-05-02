@@ -7,32 +7,19 @@
 </head>
 <body>
 <script>
-    function memoize(fn) {
-        const cache = {};
-
-        return function(...args) {
-            if(cache[args]) {
-                return cache[args];
-            }
-
-            const result = fn(...args);
-            cache[args] = result;
-
-            return result;
-        }
-    }
-
-    function slowFib(n) {
-        if(n < 2) {
-            return n;
+    class Queue {
+        constructor() {
+            this.data = [];
         }
 
-        return fib(n - 1) + fib(n - 2);
-    }
+        add(record) {
+            this.data.unshift(record);
+        }
 
-    const fib = memoize(slowFib);
-
-    console.log(fib(5))
+        remove() {
+            return this.data.pop();
+        }
+    }    
 </script>
 </body>
 </html>
