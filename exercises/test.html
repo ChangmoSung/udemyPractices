@@ -7,62 +7,32 @@
 </head>
 <body>
 <script>
-   class Stack {
-        constructor() {
-            this.data = [];
-        }
+    function memoize(fn) {
+        const cache = {};
 
-        push(record) {
-            this.data.push(record);
-        }
+        return function(n) {
+            if(cache[n]) {
+                return cache[n]
+            }
 
-        pop() {
-            return this.data.pop();
-        }
+            const result = fn(n);
+            cache[n] = result;
 
-        peek() {
-            return this.data[this.data.length - 1];
+            return result;
         }
     }
-
-    class Queue {
-        constructor() {
-            this.first = new Stack();
-            this.second = new Stack();
+    
+    function slowFib(n) {
+        if(n < 2) {
+            return n;
         }
 
-        add(record) {
-            this.first.push(record);
-        }
-
-        remove() {
-            while (this.first.peek()) {
-                this.second.push(this.first.pop());
-            }
-
-            const record = this.second.pop();
-
-            while (this.second.peek()) {
-                this.first.push(this.second.pop());
-            }
-
-            return record;
-        }
-
-        peek() {
-            while (this.first.peek()) {
-                this.second.push(this.first.pop());
-            }
-
-            const record = this.second.peek();
-
-            while (this.second.peek()) {
-                this.first.push(this.second.pop());
-            }
-
-            return record;
-        }
+        return fib(n - 1) + fib(n - 2);
     }
+
+    const fib = memoize(slowFib);
+
+    fib(1000)
 
 </script>
 </body>
