@@ -7,28 +7,18 @@
 </head>
 <body>
 <script>
-    const str = 'hhhhhhhi';
+    function fib(n) {
+        const array = [0, 1];
 
-    function maxChar(str) {
-        const obj = {};
-        let max = 0;
-        let maxChar = '';
-
-        for (let char of str) {
-            obj[char] = obj[char] + 1 || 1;
+        for(let i = 2; i <= n; i++) {
+            
+            array.push(array[i - 1] + array[i - 2])
         }
 
-        for (let char in obj) {
-            if (obj[char] > max) {
-                max = obj[char];
-                maxChar = char;
-            }
-        }
-
-        return maxChar
+        console.log(array[n])
     }
 
-    maxChar(str)
+    fib(4)
 
 </script>
 </body>
