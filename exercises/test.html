@@ -7,16 +7,16 @@
 </head>
 <body>
 <script>
-   class Queue {
+   class Stack {
         constructor() {
             this.data = [];
         }
 
-        add(record) {
-            this.data.unshift(record);
+        push(record) {
+            this.data.push(record);
         }
 
-        remove() {
+        pop() {
             return this.data.pop();
         }
 
@@ -25,20 +25,43 @@
         }
     }
 
-    function weave(sourceOne, sourceTwo) {
-        const q = new Queue();
-
-        while (sourceOne.peek() || sourceTwo.peek()) {
-            if (sourceOne.peek()) {
-                q.add(sourceOne.remove())
-            }
-
-            if (sourceTwo.peek()) {
-                q.add(sourceTwo.remove());
-            }
+    class Queue {
+        constructor() {
+            this.first = new Stack();
+            this.second = new Stack();
         }
 
-        return q;
+        add(record) {
+            this.first.push(record);
+        }
+
+        remove() {
+            while (this.first.peek()) {
+                this.second.push(this.first.pop());
+            }
+
+            const record = this.second.pop();
+
+            while (this.second.peek()) {
+                this.first.push(this.second.pop());
+            }
+
+            return record;
+        }
+
+        peek() {
+            while (this.first.peek()) {
+                this.second.push(this.first.pop());
+            }
+
+            const record = this.second.peek();
+
+            while (this.second.peek()) {
+                this.first.push(this.second.pop());
+            }
+
+            return record;
+        }
     }
 
 </script>
