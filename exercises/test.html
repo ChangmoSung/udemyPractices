@@ -7,21 +7,15 @@
 </head>
 <body>
 <script>
-   function fizzbuzz() {
-        for (let i = 1; i <= 100; i++) {
-            if (i % 3 === 0 & i % 5 === 0) {
-                console.log('fizzbuzz');
-            } else if (i % 3 === 0) {
-                console.log('fizz');
-            } else if (i % 5 === 0) {
-                console.log('buzz')
-            } else {
-                console.log(i);
-            }
-        }
-    }
+   function anagram(str1, str2) {
+       return sort(str1) === sort(str2);
+   }
 
-    fizzbuzz()
+   function sort(str) {
+       return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
+   }
+
+   anagram('hi', 'ih')
 
 </script>
 </body>
