@@ -7,17 +7,26 @@
 </head>
 <body>
 <script>
-    function capitalize(str) {
-        const words = [];
+    const array = [1, 2, 3, 4, 5, 3, 7];
+    size = 4;
 
-        for (let word of str.split(' ')) {
-            words.push(word[0].toUpperCase() + word.slice(1));
+    function chunk(array, size) {
+        const chunked = [];
+
+        for (let element of array) {
+            const last = chunked[chunked.length - 1];
+
+            if (!last || last.length === size) {
+                chunked.push([element]);
+            } else {
+                last.push(element);
+            }
         }
 
-        return words.join(' ');
+        return chunked;
     }
 
-    capitalize('changmo is the best')
+    chunk(array, size)
 
 </script>
 </body>
