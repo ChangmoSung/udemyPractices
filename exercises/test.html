@@ -7,32 +7,23 @@
 </head>
 <body>
 <script>
-    function memoize(fn) {
-        const cache = {};
+    function steps(n) {
+        for(let row = 0; row < n; row++) {
+            let stair = '';
 
-        return function(n) {
-            if(cache[n]) {
-                return cache[n]
+            for(let column = 0; column < n; column++) {
+                if(column <= row) {
+                    stair += '#';
+                } else {
+                    stair += ' '
+                }
             }
 
-            const result = fn(n);
-            cache[n] = result;
-
-            return result;
+            console.log(stair)
         }
     }
-    
-    function slowFib(n) {
-        if(n < 2) {
-            return n;
-        }
 
-        return fib(n - 1) + fib(n - 2);
-    }
-
-    const fib = memoize(slowFib);
-
-    fib(1000)
+    steps(3)
 
 </script>
 </body>
