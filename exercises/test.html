@@ -7,15 +7,17 @@
 </head>
 <body>
 <script>
-    function steps(n) {
+    function pyramid(n) {
+        const midpoint = Math.floor((n * 2 - 1) / 2);
+
         for(let row = 0; row < n; row++) {
             let stair = '';
 
-            for(let column = 0; column < n; column++) {
-                if(column <= row) {
+            for(let column = 0; column < n * 2 - 1; column++) {
+                if(midpoint - row <= column && midpoint + row >= column) {
                     stair += '#';
                 } else {
-                    stair += ' '
+                    stair += ' ';
                 }
             }
 
@@ -23,8 +25,7 @@
         }
     }
 
-    steps(3)
-
+    pyramid(3)
 </script>
 </body>
 </html>
