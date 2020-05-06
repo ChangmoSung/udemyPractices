@@ -7,17 +7,27 @@
 </head>
 <body>
 <script>
-    function capitalize(str) {
+    const array = [1,2,3,4,5,6,7]
+    const size = 3;
+
+    function spiral(array, size) {
         const result = [];
 
-        for (let char of str.split(' ')) {
-            result.push(char[0].toUpperCase() + char.slice(1));
+        for (let element of array) {
+            const last = result[result.length - 1];
+
+            if(!last || last.length === size) {
+                result.push([element])
+            }
+            else {
+                last.push(element)
+            }
         }
 
-        return result.join(' ');
+        console.log(result)
     }
 
-    capitalize(`hi i'm Changmo`)
+    spiral(array, size)
 </script>
 </body>
 </html>
