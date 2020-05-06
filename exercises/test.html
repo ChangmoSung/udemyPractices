@@ -7,26 +7,17 @@
 </head>
 <body>
 <script>
-    const array = [1,2,3,4,5,6,7]
-    const size = 3;
+    function capitalize(str) {
+        const result = [];
 
-    function chunk(array, size) {
-        const chunked = [];
-
-        for(let element of array) {
-            let last = chunked[chunked.length - 1];
-
-            if(!last || last.length === size) {
-                chunked.push([element])
-            } else {
-                last.push(element)
-            }
+        for (let char of str.split(' ')) {
+            result.push(char[0].toUpperCase() + char.slice(1));
         }
 
-        return chunked
+        return result.join(' ');
     }
 
-    chunk(array, size);
+    capitalize(`hi i'm Changmo`)
 </script>
 </body>
 </html>
