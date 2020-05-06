@@ -7,27 +7,32 @@
 </head>
 <body>
 <script>
-    const array = [1,2,3,4,5,6,7]
-    const size = 3;
+    function memoize(fn) {
+        const cache = {};
 
-    function spiral(array, size) {
-        const result = [];
-
-        for (let element of array) {
-            const last = result[result.length - 1];
-
-            if(!last || last.length === size) {
-                result.push([element])
+        return function(n) {
+            if(cache[n]) {
+                return cache[n]
             }
-            else {
-                last.push(element)
-            }
+            const result = fn(n);
+            cache[n] = result;
+
+            return result;
+        }
+    }
+    function slowFib(n) {
+        const array = [0, 1];
+
+        if(n < 2) {
+            return n;
         }
 
-        console.log(result)
+        return fib(n - 1) + fib(n - 2);
     }
 
-    spiral(array, size)
+    const fib = memoize(slowFib);
+
+    console.log(fib(1000))
 </script>
 </body>
 </html>
