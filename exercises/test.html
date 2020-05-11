@@ -7,20 +7,26 @@
 </head>
 <body>
 <script>
-    function vowels(str) {
-        let result = 0;
-        const vowelList = ['a', 'e', 'i', 'o', 'u'];
+    const array = [1,2,3,4,5,6,7];
+    const size = 3;
 
-        for(let char of str) {
-            if(vowelList.includes(char)) {
-                result++;
+    function chunk(array, size) {
+        const result = [];
+        
+        for(let element of array) {
+            const last = result[result.length - 1];
+
+            if(!last || last.length === size) {
+                result.push([element]);
+            } else {
+                last.push(element);
             }
         }
 
         console.log(result)
     }
 
-    vowels('hi thereeeee')
+    chunk(array, size)
 </script>
 </body>
 </html>
