@@ -7,32 +7,20 @@
 </head>
 <body>
 <script>
-    function memoize(fn) {
-        const cache = {};
+    function vowels(str) {
+        let result = 0;
+        const vowelList = ['a', 'e', 'i', 'o', 'u'];
 
-        return function(n) {
-            if(cache[n]) {
-                return cache[n]
+        for(let char of str) {
+            if(vowelList.includes(char)) {
+                result++;
             }
-            const result = fn(n);
-            cache[n] = result;
-
-            return result;
-        }
-    }
-    function slowFib(n) {
-        const array = [0, 1];
-
-        if(n < 2) {
-            return n;
         }
 
-        return fib(n - 1) + fib(n - 2);
+        console.log(result)
     }
 
-    const fib = memoize(slowFib);
-
-    console.log(fib(1000))
+    vowels('hi thereeeee')
 </script>
 </body>
 </html>
