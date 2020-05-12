@@ -34,16 +34,32 @@
 
             return counter;
         }
+
+        getFirst() {
+            return this.head;
+        }
+
+        getLast() {
+            if(!this.head) {
+                return null;
+            }
+
+            let node = this.head;
+            while(node) {
+                if(!node.next) {
+                    return node;
+                }
+            }
+        }
     }
 
     const nodeOne = new Node(5);
     const list = new LinkedList();
 
-    list.head = nodeOne;
     list.insertFirst(15);
     list.insertFirst(25);
-   
-    console.log(list)
+
+    console.log(list.getLast())
 </script>
 </body>
 </html>
