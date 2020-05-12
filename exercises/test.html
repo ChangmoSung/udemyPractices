@@ -78,13 +78,23 @@
 
             let previous = this.head;
             let node = this.head.next;
-            
+
             while(node.next) {
                 previous = node;
-                node = node.next;
+                node = previous.next;
             }
 
             previous.next = null;
+        }
+
+        insertLast(data) {
+            const last = this.getLast();
+
+            if(last) {
+                last.next = new Node(data);
+            } else {
+                this.head = new Node(data);
+            }
         }
     }
 
@@ -95,9 +105,9 @@
     list.insertFirst(25);
     list.insertFirst(35);
     // list.clear()
-    list.removeLast();
+    // list.removeLast();
 
-    console.log(list)
+    console.log(list.insertLast())
 </script>
 </body>
 </html>
