@@ -44,6 +44,8 @@ class Node {
                 if(!node.next) {
                     return node;
                 }
+
+                node = node.next;
             }
         }
     }
