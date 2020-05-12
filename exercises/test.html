@@ -96,19 +96,36 @@
                 this.head = new Node(data);
             }
         }
+
+        getAt(index) {
+            let counter = 0;
+            let node = this.head;
+
+            while(node) {
+                if(counter === index) {
+                    return node;
+                }
+
+                counter++;
+                node = node.next;
+            }
+
+            return null;
+        }
     }
 
     const nodeOne = new Node(5);
     const list = new LinkedList();
 
     list.insertFirst(15);
-    list.clear()
+    // list.clear()
     list.insertFirst(25);
     list.insertFirst(35);
-    list.removeLast();
-    list.insertLast(5)
+    // list.removeLast();
+    // list.insertLast(5);
+    list.getAt(1);
 
-    console.log(list)
+    console.log(list.getAt(1))
 </script>
 </body>
 </html>
