@@ -112,6 +112,25 @@
 
             return null;
         }
+
+        removeAt(index) {
+            if(!this.head) {
+                return;
+            }
+
+            if(index === 0) {
+                this.head = this.head.next;
+                return;
+            }
+
+            const previous = this.getAt(index - 1);
+
+            if(!previous || !previous.next) {
+                return;
+            }
+
+            previous.next = previous.next.next;
+        }
     }
 
     const nodeOne = new Node(5);
@@ -123,9 +142,9 @@
     list.insertFirst(35);
     // list.removeLast();
     // list.insertLast(5);
-    list.getAt(1);
+    list.removeAt(1)
 
-    console.log(list.getAt(1))
+    console.log(list)
 </script>
 </body>
 </html>
