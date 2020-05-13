@@ -22,12 +22,41 @@ class Node {
     }
 }
 
-const node = new Node();
-node.add(1);
-node.add(2);
-node.add(3);
-node.remove(1)
-console.log(node)
+class Tree {
+    constructor() {
+        this.root = null;
+    }
+
+    traverseBF(fn) {
+        const arr = [this.root];
+
+        while(arr.length) {
+            const node = arr.shift();
+
+            arr.push(...node.children);
+
+            fn(node);
+        }
+    }
+
+    traverseDF(fn) {
+        const arr = [this.root];
+
+        while(arr.length) {
+            const node = arr.shift();
+
+            arry.unshift(...node.children);
+
+            fn(node);
+        }
+    }
+}
+
+const node = new Node(1);
+const tree = new Tree();
+tree.root = node;
+
+console.log(tree)
 </script>
 </body>
 </html>
