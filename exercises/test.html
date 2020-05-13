@@ -7,179 +7,20 @@
 </head>
 <body>
 <script>
-    class Node {
-        constructor(data, next = null) {
-            this.data = data;
-            this.next = next;
-        }
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.children = [];
     }
 
-    class LinkedList {
-        constructor() {
-            this.head = null;
-        }
-
-        insertFirst(data) {
-            this.head = new Node(data, this.head);
-        }
-
-        size() {
-            if(!this.head) {
-                return 0;
-            }
-
-            let counter = 0;
-            let node = this.head;
-
-            while(node) {
-                counter++;
-                node = node.next;
-            }
-
-            return counter;
-        }
-
-        getFirst() {
-            return this.head;
-        }
-
-        getLast() {
-            if(!this.head) {
-                return null;
-            }
-
-            let node = this.head;
-            while(node) {
-                if(!node.next) {
-                    return node;
-                }
-
-                node = node.next;
-            }
-        }
-
-        clear() {
-            this.head = null;
-        }
-
-        removeFirst() {
-            if(!this.head) {
-                return;
-            }
-
-            this.head = this.head.next;
-        }
-
-        removeLast() {
-            if(!this.head) {
-                return;
-            }
-
-            if(!this.head.next) {
-                this.head = null;
-                return;
-            }
-
-            let previous = this.head;
-            let node = this.head.next;
-
-            while(node.next) {
-                previous = node;
-                node = previous.next;
-            }
-
-            previous.next = null;
-        }
-
-        insertLast(data) {
-            let last = this.getLast();
-
-            if(last) {
-                last.next = new Node (data);
-            } else {
-                this.head = new Node(data);
-            }
-        }
-
-        getAt(index) {
-            let counter = 0;
-            let node = this.head;
-
-            while(node) {
-                if(counter === index) {
-                    return node;
-                }
-                counter++;
-                node = node.next;
-            }
-
-            return node;
-        }
-
-        removeAt(index) {
-            if(!this.head) {
-                return;
-            }
-
-            if(index === 0) {
-                this.head = this.head.next;
-                return;
-            }
-
-            const previous = this.getAt(index - 1);
-            if(!previous || !previous.next) {
-                return;
-            }
-
-            previous.next = previous.next.next;
-        }
-
-        insertAt(data, index) {
-            if(!this.head) {
-                this.head = new Node(data);
-                return;
-            }
-
-            if(index === 0) {
-                this.head = new Node(data, this.head);
-                return;
-            }
-
-            const previous = this.getAt(index - 1) || this.getLast();
-
-            previous.next = new Node(data, previous.next);
-        }
+    add(data) {
+        this.children.push(new Node(data));
     }
+}
 
-    const list = new LinkedList();
-    
-    list.insertFirst(1);
-    list.insertFirst(2);
-    list.insertFirst(3);
-    list.insertFirst(4);
-    list.insertFirst(5);
-    // list.removeLast();
-    // list.insertLast(4);
-    // list.removeAt(1);
-
-    function fromLast(n) {
-        let slow = list.getFirst();
-        let fast = list.getFirst();
-
-        while(n > 0) {
-            fast = fast.next;
-            n--;
-        }
-
-        while(fast.next) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-
-        return slow;
-    }
-
-    console.log(fromLast(3))
+const node = new Node(1);
+node.add(2)
+console.log(node)
 </script>
 </body>
 </html>
