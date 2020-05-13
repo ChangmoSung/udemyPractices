@@ -162,19 +162,24 @@
     // list.insertLast(4);
     // list.removeAt(1);
 
-    function midpoint(list) {
+    function fromLast(n) {
         let slow = list.getFirst();
         let fast = list.getFirst();
 
-        while(fast.next && fast.next.next) {
+        while(n > 0) {
+            fast = fast.next;
+            n--;
+        }
+
+        while(fast.next) {
             slow = slow.next;
-            fast = fast.next.next;
+            fast = fast.next;
         }
 
         return slow;
     }
 
-    console.log(midpoint(list))
+    console.log(fromLast(3))
 </script>
 </body>
 </html>
