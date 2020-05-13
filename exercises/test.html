@@ -16,10 +16,17 @@ class Node {
     add(data) {
         this.children.push(new Node(data));
     }
+
+    remove(data) {
+        this.children = this.children.filter(node => node.data !== data);
+    }
 }
 
-const node = new Node(1);
-node.add(2)
+const node = new Node();
+node.add(1);
+node.add(2);
+node.add(3);
+node.remove(1)
 console.log(node)
 </script>
 </body>
