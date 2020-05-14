@@ -7,283 +7,59 @@
 </head>
 <body>
 <script>
-// class Node {
-//     constructor(data, next = null) {
-//         this.data = data;
-//         this.next = next;
-//     }
-// }
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
 
-// class Linkedlist {
-//     constructor() {
-//         this.head = null;
-//     }
-
-//     insertFirst(data) {
-//         this.head = new Node(data, this.head)
-//     }
-
-//     size() {
-//         let counter = 0;
-
-//         let node = this.head;
-
-//         while(node) {
-//             counter++;
-//             node = node.next;
-//         }
-
-//         return counter;
-//     }
-
-//     getFirst() {
-//         return this.head;
-//     }
-
-//     getLast() {
-//         if(!this.head) {
-//             return null;
-//         }
-
-//         let node = this.head;
-//         while(node) {
-//             if(!node.next) {
-//                 return node;
-//             }
-
-//             node = node.next;
-//         }
-//     }
-
-//     clear() {
-//         this.head = null;
-//     }
-
-//     removeFirst() {
-//         if(!this.head) {
-//             return;
-//         }
-
-//         this.head = this.head.next;
-//     }
-
-//     removeLast() {
-//         if(!this.head) {
-//             return;
-//         }
-
-//         if(!this.head.next) {
-//             this.head = null;
-//         }
-
-//         let previous = this.head;
-//         let node = previous.next;
-
-//         while(node.next) {
-//             previous = node;
-//             node = node.next;
-//         }
-
-//         previous.next = null;
-//     }
-
-//     insertLast(data) {
-//         const last = this.getLast();
-
-//         if(!last) {
-//             this.head = new Node(data);
-//         } else {
-//             last.next = new Node(data);
-//         }
-//     }
-
-//     getAt(index) {
-//         let node = this.head;
-//         let counter = 0;
-
-//         while(node) {
-//             if(index === counter) {
-//                 return node;
-//             }
-
-//             counter++;
-//             node = node.next;
-//         }
-
-//         return null;
-//     }
-
-//     removeAt(index) {
-//         if(!this.head) {
-//             return;
-//         }
-
-//         if(index === 0) {
-//             this.head = null;
-//             return;
-//         }
-
-//         let previous = this.getAt(index - 1);
-
-//         if(!previous || !previous.next) {
-//             return;
-//         }
-
-//         previous.next = previous.next.next;
-//     }
-
-//     insertAt(data, index) {
-//         if(!this.head) {
-//             this.head = new Node(data);
-//             return;
-//         }
-
-//         if(index === 0) {
-//             this.head = new Node(data, this.head);
-//             return;
-//         }
-
-//         let previous = this.getAt(index - 1) || this.getLast();
-//         let node = new Node(data, previous.next);
-
-//         previous.next = node;
-//     }
-// }
-
-// const list = new Linkedlist();
-// list.insertFirst(1);
-// list.insertFirst(2);
-// list.insertFirst(3);
-// list.insertFirst(4);
-// list.insertFirst(5);
-
-// class Node {
-//     constructor(data) {
-//         this.data = data;
-//         this.children = [];
-//     }
-
-//     add(data) {
-//         this.children.push(new Node(data))
-//     }
-
-//     remove(data) {
-//         this.children = this.children.filter(node => node.data.toString() !== data.toString());
-//     }
-// }
-
-// class Tree {
-//     constructor() {
-//         this.root = null;
-//     }
-
-//     traverseBF(fn) {
-//         const arr = [this.root]
-
-//         while(arr.length) {
-//             const node = arr.shift();
-
-//             arr.push(...node.children);
-
-//             fn(node)
-//         }
-//     }
-
-//     traverseDF(fn) {
-//         const arr = [this.root];
-
-//         while(arr.length) {
-//             const node = arr.shift();
-
-//             arr.unshift(...node.children);
-
-//             fn(node);
-//         }
-//     }
-
-//     test(element) {
-//         // console.log(element)
-//     }
-// }
-
-// const node = new Node(1);
-// node.add(2);
-// node.add(3);
-// node.add(4);
-// node.children[0].add(5)
-// node.children[2].add(5)
-// // node.remove(2);
-//     node.insert(6)
-
-// const tree = new Tree();
-// tree.root = node;
-
-// tree.traverseBF(tree.test)
-// tree.traverseDF(tree.test)
-
-
-// console.log(tree)
-
-    class Node {
-        constructor(data) {
-            this.data = data;
-            this.left = null;
-            this.right = null;
-        }
-
-        insert(data) {
-            if (data < this.data && this.left) {
-                this.left.insert(data);
-            } else if (data < this.data) {
-                this.left = new Node(data);
-            } else if (data > this.data & this.right) {
-                this.right.insert(data);
-            } else if (data > this.data) {
-                this.right = new Node(data);
-            }
-        }
-
-        contains(data) {
-            if (this.data === data) {
-                return this;
-            }
-
-            if (this.data < data && this.right) {
-                return this.right.contains(data);
-            } else if (this.data > data && this.left) {
-                return this.left.contains(data);
-            }
-
-            return null;
+    insert(data) {
+        if (data < this.data && this.left) {
+            this.left.insert(data);
+        } else if (data < this.data) {
+            this.left = new Node(data);
+        } else if (data > this.data & this.right) {
+            this.right.insert(data);
+        } else if (data > this.data) {
+            this.right = new Node(data);
         }
     }
 
-    const node = new Node(1);
-    node.insert(2);
-    node.insert(0);
-    node.insert(-1);
-    console.log(node)
+    contains(data) {
+        if (this.data === data) {
+            return this;
+        }
+
+        if (this.data < data && this.right) {
+            return this.right.contains(data);
+        } else if (this.data > data && this.left) {
+            return this.left.contains(data);
+        }
+
+        return null;
+    }
+}
+
+const node = new Node(1);
+node.insert(2);
+node.insert(0);
+node.insert(-1);
+// node.right.right = new Node(-10)
 
 function validate(node, min = null, max = null) {
-    if(max !== null && node.data > max) {
-        return false;
-    }
+    if(max !== null && node.data > max) return false;
 
-    if(min !== null && node.data < min) {
-        return false;
-    }
+    if(min !== null && node.data < min) return false;
 
-    if(node.left && !validate(node.left, min, node.data)) {
-        return false;
-    }
+    if(node.left && !validate(node.left, min, node.data)) return false;
 
-    if(node.right && !validate(node.right, max, node.data)) {
-        return false;
-    }
+    if(node.right && !validate(node.right, node.data, max)) return false;
 
     return true;
 }
 
+console.log(validate(node));
 
 </script>
 </body>

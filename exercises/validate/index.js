@@ -18,7 +18,7 @@ function validate(node, min = null, max = null) {
         return false;
     }
 
-    if(node.right && !validate(node.right, max, node.data)) {
+    if(node.right && !validate(node.right, node.data, max)) {
         return false;
     }
 
