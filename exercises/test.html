@@ -8,59 +8,170 @@
 <body>
 <script>
 class Node {
-    constructor(data) {
+    constructor(data, next = null) {
         this.data = data;
-        this.left = null;
-        this.right = null;
+        this.next = next;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null
     }
 
-    insert(data) {
-        if (data < this.data && this.left) {
-            this.left.insert(data);
-        } else if (data < this.data) {
-            this.left = new Node(data);
-        } else if (data > this.data & this.right) {
-            this.right.insert(data);
-        } else if (data > this.data) {
-            this.right = new Node(data);
+    insertFirst(data) {
+        this.head = new Node(data, this.head);
+    }
+
+    size() {
+        let counter = 0;
+        let node = this.head;
+
+        while(node) {
+            counter++
+            node = node.next;
+        }
+
+        return counter;
+    }
+
+    getFirst() {
+        return this.head;
+    }
+
+    getLast() {
+        if(!this.head) {
+            return null;
+        }
+
+        let node = this.head;
+        while(node.next) {
+            node = node.next;
+        }
+
+        return node;
+    }
+
+    clear() {
+        this.head = null;
+    }
+
+    removeFirst() {
+        if(!this.head) {
+            return;
+        }
+
+        this.head = this.head.next;
+    }
+
+    removeLast() {
+        if(!this.head) {
+            return;
+        }
+
+        if(!this.head.next) {
+            this.head = null;
+            return;
+        }
+
+        let previous = this.head;
+        let node = previous.next;
+
+        while(node.next) {
+            previous = node;
+            node = node.next;
+        }
+
+        previous.next = null;
+    }
+
+    insertLast(data) {
+        const last = this.getLast();
+
+        if(last) {
+            last.next = new Node(data);
+        } else {
+            this.head = new Node(data);
         }
     }
 
-    contains(data) {
-        if (this.data === data) {
-            return this;
-        }
+    getAt(index) {
+        let counter = 0;
+        let node = this.head;
 
-        if (this.data < data && this.right) {
-            return this.right.contains(data);
-        } else if (this.data > data && this.left) {
-            return this.left.contains(data);
+        while(node) {
+            if(counter === index) {
+                return node;
+            }
+
+            counter++;
+            node = node.next;
         }
 
         return null;
     }
+
+    removeAt(index) {
+        if(!this.head) {
+            return;
+        }
+
+        if(index === 0) {
+            this.head = this.head.next;
+        }
+
+        const last = this.getAt(index - 1);
+        if(!last || !last.next) {
+            return;
+        }
+
+        last.next = last.next.next;
+    }
+
+    insertAt(data, index) {
+        if(!this.head) {
+            this.head = new Node(data);
+            return;
+        }
+
+        if(index === 0) {
+            this.head = new Node(data, this.head);
+            return;
+        }
+
+        const last = this.getAt(index - 1) || this.getLast();
+        const node = new Node(data, last.next);
+
+        last.next = node;
+    }
 }
 
-const node = new Node(1);
-node.insert(2);
-node.insert(0);
-node.insert(-1);
-// node.right.right = new Node(-10)
+const list = new LinkedList();
+list.insertFirst(1)
+list.insertFirst(2)
+list.insertFirst(3)
+list.insertFirst(4)
+list.insertFirst(5)
 
-function validate(node, min = null, max = null) {
-    if(max !== null && node.data > max) return false;
+// console.log(list)
 
-    if(min !== null && node.data < min) return false;
+function stepBack(list, n) {
+    let fast = list.getAt(n);
+    let slow = list.getFirst();
 
-    if(node.left && !validate(node.left, min, node.data)) return false;
+    if(!fast) {
+        return;
+    }
 
-    if(node.right && !validate(node.right, node.data, max)) return false;
+    while(fast.next) {
+        fast = fast.next;
+        slow = slow.next;
+    }
 
-    return true;
+    return slow;
 }
 
-console.log(validate(node));
-
+stepBack(list, 1)
 </script>
 </body>
 </html>

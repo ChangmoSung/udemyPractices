@@ -13,11 +13,10 @@
 
 function fromLast(list, n) {
     let slow = list.getFirst();
-    let fast = list.getFirst();
+    let fast = list.getAt(n);
 
-    while(n > 0) {
-        fast = fast.next;
-        n--;
+    if(!fast) {
+        return;
     }
 
     while(fast.next) {
