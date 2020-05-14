@@ -157,68 +157,75 @@
 // list.insertFirst(4);
 // list.insertFirst(5);
 
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.children = [];
-    }
+// class Node {
+//     constructor(data) {
+//         this.data = data;
+//         this.children = [];
+//     }
 
-    add(data) {
-        this.children.push(new Node(data))
-    }
+//     add(data) {
+//         this.children.push(new Node(data))
+//     }
 
-    remove(data) {
-        this.children = this.children.filter(node => node.data.toString() !== data.toString());
-    }
-}
+//     remove(data) {
+//         this.children = this.children.filter(node => node.data.toString() !== data.toString());
+//     }
+// }
 
-class Tree {
-    constructor() {
-        this.root = null;
-    }
+// class Tree {
+//     constructor() {
+//         this.root = null;
+//     }
 
-    traverseBF(fn) {
-        const arr = [this.root]
+//     traverseBF(fn) {
+//         const arr = [this.root]
 
-        while(arr.length) {
-            const node = arr.shift();
+//         while(arr.length) {
+//             const node = arr.shift();
 
-            arr.push(...node.children);
+//             arr.push(...node.children);
 
-            fn(node)
-        }
-    }
+//             fn(node)
+//         }
+//     }
 
-    traverseDF(fn) {
-        const arr = [this.root];
+//     traverseDF(fn) {
+//         const arr = [this.root];
 
-        while(arr.length) {
-            const node = arr.shift();
+//         while(arr.length) {
+//             const node = arr.shift();
 
-            arr.unshift(...node.children);
+//             arr.unshift(...node.children);
 
-            fn(node);
-        }
-    }
+//             fn(node);
+//         }
+//     }
 
-    test(element) {
-        console.log(element)
-    }
-}
+//     test(element) {
+//         // console.log(element)
+//     }
+// }
 
-const node = new Node(1);
-node.add(2);
-node.add(3);
-node.add(4);
-// node.remove(2);
+// const node = new Node(1);
+// node.add(2);
+// node.add(3);
+// node.add(4);
+// node.children[0].add(5)
+// node.children[2].add(5)
+// // node.remove(2);
+//     node.insert(6)
 
-const tree = new Tree();
-tree.root = node;
+// const tree = new Tree();
+// tree.root = node;
 
 // tree.traverseBF(tree.test)
-tree.traverseDF(tree.test)
+// tree.traverseDF(tree.test)
 
-console.log(tree)
+
+// console.log(tree)
+
+
+
 
 </script>
 </body>

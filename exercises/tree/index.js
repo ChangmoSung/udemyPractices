@@ -53,6 +53,10 @@ class Tree {
             fn(node);
         }
     }
+
+    test(node) {
+        // console.log(node)
+    }
 }
 
 

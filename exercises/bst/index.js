@@ -23,12 +23,18 @@ class Node {
             this.left.insert(data);
         } else if(data < this.data) {
             this.left = new Node(data);
-        } else if(data > this.data && this.right) {
+        } else if(data > this.data & this.right) {
             this.right.insert(data);
         } else if(data > this.data) {
             this.right = new Node(data);
         }
     }
 }
+
+const node = new Node(1);
+node.insert(2);
+node.insert(0);
+node.insert(-1);
+console.log(node)
 
 module.exports = Node;
