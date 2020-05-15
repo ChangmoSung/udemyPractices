@@ -6,172 +6,25 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Click the button</h1>
+
+<button>Me!</button>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+
 <script>
-class Node {
-    constructor(data, next = null) {
-        this.data = data;
-        this.next = next;
-    }
-}
+$('button').on('click', () => {
+    console.log('fdsfs')
+})
 
-class LinkedList {
-    constructor() {
-        this.head = null
-    }
+$('button').on('click', () => {
+    console.log('there')
+})
 
-    insertFirst(data) {
-        this.head = new Node(data, this.head);
-    }
+$('button').trigger('click');
 
-    size() {
-        let counter = 0;
-        let node = this.head;
-
-        while(node) {
-            counter++
-            node = node.next;
-        }
-
-        return counter;
-    }
-
-    getFirst() {
-        return this.head;
-    }
-
-    getLast() {
-        if(!this.head) {
-            return null;
-        }
-
-        let node = this.head;
-        while(node.next) {
-            node = node.next;
-        }
-
-        return node;
-    }
-
-    clear() {
-        this.head = null;
-    }
-
-    removeFirst() {
-        if(!this.head) {
-            return;
-        }
-
-        this.head = this.head.next;
-    }
-
-    removeLast() {
-        if(!this.head) {
-            return;
-        }
-
-        if(!this.head.next) {
-            this.head = null;
-            return;
-        }
-
-        let previous = this.head;
-        let node = previous.next;
-
-        while(node.next) {
-            previous = node;
-            node = node.next;
-        }
-
-        previous.next = null;
-    }
-
-    insertLast(data) {
-        const last = this.getLast();
-
-        if(last) {
-            last.next = new Node(data);
-        } else {
-            this.head = new Node(data);
-        }
-    }
-
-    getAt(index) {
-        let counter = 0;
-        let node = this.head;
-
-        while(node) {
-            if(counter === index) {
-                return node;
-            }
-
-            counter++;
-            node = node.next;
-        }
-
-        return null;
-    }
-
-    removeAt(index) {
-        if(!this.head) {
-            return;
-        }
-
-        if(index === 0) {
-            this.head = this.head.next;
-        }
-
-        const last = this.getAt(index - 1);
-        if(!last || !last.next) {
-            return;
-        }
-
-        last.next = last.next.next;
-    }
-
-    insertAt(data, index) {
-        if(!this.head) {
-            this.head = new Node(data);
-            return;
-        }
-
-        if(index === 0) {
-            this.head = new Node(data, this.head);
-            return;
-        }
-
-        const last = this.getAt(index - 1) || this.getLast();
-        const node = new Node(data, last.next);
-
-        last.next = node;
-    }
-}
-
-const list = new LinkedList();
-list.insertFirst(1)
-list.insertFirst(2)
-list.insertFirst(3)
-list.insertFirst(4)
-list.insertFirst(5)
-
-// console.log(list)
-
-function stepBack(list, n) {
-    let fast = list.getAt(n);
-    let slow = list.getFirst();
-
-    if(!fast) {
-        return;
-    }
-
-    while(fast.next) {
-        fast = fast.next;
-        slow = slow.next;
-    }
-
-    return slow;
-}
-
-stepBack(list, 1)
+$('button').off('click')
 </script>
 </body>
 </html>
