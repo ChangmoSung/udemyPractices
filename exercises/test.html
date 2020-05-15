@@ -6,25 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Click the button</h1>
-
-<button>Me!</button>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-
 <script>
-$('button').on('click', () => {
-    console.log('fdsfs')
-})
+class Events {
+    constructor() {
+        this.events = {}
+    }
 
-$('button').on('click', () => {
-    console.log('there')
-})
+    on(evnetName, callback) {
+        if(this.events[eventName]) {
+            this.events[eventName].push(callback);
+        } else {
+            this.events[eventName] = [callback];
+        }
+    }
 
-$('button').trigger('click');
+    trigger(eventName) {
+        if(this.events[eventName]) {
+            for(let cb of this.events[eventName]) {
+                cb();
+            }
+        }
+    }
 
-$('button').off('click')
+    off(eventName) {
+        delete this.events[eventName];
+    }
+}
 </script>
 </body>
 </html>
